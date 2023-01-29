@@ -1,0 +1,117 @@
+{
+  "name": "client",
+  "hash": "2bedbf13fd9cd6964ffd",
+  "publicPath": "/mobify/bundle/development/",
+  "outputPath": "/Users/rpaez/Documents/Trainings/pwa-kit-starter-project/build",
+  "assetsByChunkName": {
+    "main": [
+      "main.js",
+      "main.f0a7fea559a57e29dec4.hot-update.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "main.f0a7fea559a57e29dec4.hot-update.json",
+      "size": 53663,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true,
+        "fullhash": "f0a7fea559a57e29dec4"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "main.js",
+      "size": 42155,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "javascriptModule": false,
+        "related": {
+          "sourceMap": "main.js.map"
+        }
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        "main"
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "main.f0a7fea559a57e29dec4.hot-update.js",
+      "size": 20269,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "hotModuleReplacement": true,
+        "immutable": true,
+        "fullhash": "f0a7fea559a57e29dec4",
+        "related": {
+          "sourceMap": "main.f0a7fea559a57e29dec4.hot-update.js.map"
+        }
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        "main"
+      ],
+      "auxiliaryChunks": []
+    }
+  ],
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        "main"
+      ],
+      "assets": [
+        {
+          "name": "main.js"
+        },
+        {
+          "name": "main.f0a7fea559a57e29dec4.hot-update.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 2,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": "main",
+      "files": [
+        "main.js",
+        "main.f0a7fea559a57e29dec4.hot-update.js"
+      ]
+    }
+  ]
+}
