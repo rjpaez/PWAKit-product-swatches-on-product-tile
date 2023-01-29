@@ -145,7 +145,7 @@ const ProductTile = (props) => {
                                     key={id}
                                     onChange={(_, href) => {
                                         if (!href) return
-                                        history.replace(href)
+                                        // TODO: update product image
                                     }}
                                     variant='circle'
                                     value={values[0]?.value}
