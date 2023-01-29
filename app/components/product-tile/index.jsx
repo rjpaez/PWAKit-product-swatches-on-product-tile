@@ -16,6 +16,7 @@ import {
     AspectRatio,
     Box,
     Skeleton as ChakraSkeleton,
+    SkeletonCircle,
     Text,
     Stack,
     useMultiStyleConfig,
@@ -48,6 +49,7 @@ export const Skeleton = () => {
                         <ChakraSkeleton />
                     </AspectRatio>
                 </Box>
+                <SkeletonCircle size='10' />
                 <ChakraSkeleton width="80px" height="20px" />
                 <ChakraSkeleton width={{base: '120px', md: '220px'}} height="12px" />
             </Stack>

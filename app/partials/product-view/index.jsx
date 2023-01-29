@@ -278,7 +278,7 @@ const ProductView = ({
                                             onChange={(_, href) => {
                                                 if (!href) return
                                                 history.replace(href)
-                                            }}clea
+                                            }}
                                             variant={id === 'color' ? 'circle' : 'square'}
                                             value={selectedValue?.value}
                                             displayName={selectedValue?.name || ''}
