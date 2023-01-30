@@ -613,6 +613,7 @@ ProductList.getProps = async ({ res, params, location, api }) => {
         api.shopperSearch.productSearch({ parameters: searchParams })
     ])
 
+    // get additional product data from api.shopperProducts.getProducts()
     const shopperProducts = await fetchShopperProducts(productSearchResult, api)
 
     // updates productSearchResult hits with additional product data
