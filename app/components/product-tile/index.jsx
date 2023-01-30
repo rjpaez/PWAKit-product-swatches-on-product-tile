@@ -7,9 +7,9 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import {HeartIcon, HeartSolidIcon} from '../icons'
+import { HeartIcon, HeartSolidIcon } from '../icons'
 
 // Components
 import {
@@ -27,14 +27,14 @@ import SwatchGroup from '../../components/swatch-group'
 import Swatch from '../../components/swatch-group/swatch'
 
 // Hooks
-import {useIntl} from 'react-intl'
-import {useProduct} from '../../hooks'
+import { useIntl } from 'react-intl'
+import { useProduct } from '../../hooks'
 
 // Other
-import {productUrlBuilder} from '../../utils/url'
+import { productUrlBuilder } from '../../utils/url'
 import Link from '../link'
 import withRegistration from '../../hoc/with-registration'
-import {useCurrency} from '../../hooks'
+import { useCurrency } from '../../hooks'
 
 const IconButtonWithRegistration = withRegistration(IconButton)
 
@@ -51,7 +51,7 @@ export const Skeleton = () => {
                 </Box>
                 <SkeletonCircle size='10' />
                 <ChakraSkeleton width="80px" height="20px" />
-                <ChakraSkeleton width={{base: '120px', md: '220px'}} height="12px" />
+                <ChakraSkeleton width={{ base: '120px', md: '220px' }} height="12px" />
             </Stack>
         </Box>
     )
@@ -72,23 +72,23 @@ const ProductTile = (props) => {
         dynamicImageProps,
         ...rest
     } = props
-    const {currency, image, price, productId} = product
-    const {variationAttributes} = useProduct(product.shopperProduct)
+    const { currency, image, price, productId } = product
     // ProductTile is used by two components, RecommendedProducts and ProductList.
     // roducts provides a localized product name as `name` and non-localized product
     // name as `productName`. ProductList provides a localized name as `productName` and does not
     // use the `name` property.
     const localizedProductName = product.name ?? product.productName
 
-    const {currency: activeCurrency} = useCurrency()
+    const { currency: activeCurrency } = useCurrency()
     const [isFavouriteLoading, setFavouriteLoading] = useState(false)
     const styles = useMultiStyleConfig('ProductTile')
+    const { variationAttributes } = product.shopperProduct ? useProduct(product.shopperProduct) : {}
 
     return (
         <Link
             data-testid="product-tile"
             {...styles.container}
-            to={productUrlBuilder({id: productId}, intl.local)}
+            to={productUrlBuilder({ id: productId }, intl.local)}
             {...rest}
         >
             <Box {...styles.imageWrapper}>
@@ -131,61 +131,65 @@ const ProductTile = (props) => {
             </Box>
             <>
                 {/* Attribute Swatches */}
-                {variationAttributes.map((variationAttribute) => {
-                    const {
-                        id,
-                        name,
-                        selectedValue,
-                        values = []
-                    } = variationAttribute
-                    return (
-                        <>
-                            {id === 'color' ? 
-                                <SwatchGroup
-                                    key={id}
-                                    onChange={(_, href) => {
-                                        if (!href) return
-                                        // TODO: update product image
-                                    }}
-                                    variant='circle'
-                                    value={values[0]?.value}
-                                    displayName={selectedValue?.name || ''}
-                                    label={name}
-                                    showLabel={false}
-                                >
-                                    {values.map(({href, name, image, value, orderable}) => (
-                                        <Swatch
-                                            key={value}
-                                            href={href}
-                                            disabled={!orderable}
-                                            value={value}
-                                            name={name}
+                {variationAttributes ?
+                    variationAttributes.map((variationAttribute) => {
+                            const {
+                                id,
+                                name,
+                                selectedValue,
+                                values = []
+                            } = variationAttribute
+                            return (
+                                <>
+                                    {id === 'color' ?
+                                        <SwatchGroup
+                                            key={id}
+                                            onChange={(_, href) => {
+                                                if (!href) return
+                                                // TODO: update product image
+                                            }}
+                                            variant='circle'
+                                            value={values[0]?.value}
+                                            displayName={selectedValue?.name || ''}
+                                            label={name}
+                                            showLabel={false}
                                         >
-                                            {image ? (
-                                                <Box
-                                                    height="100%"
-                                                    width="100%"
-                                                    minWidth="32px"
-                                                    backgroundRepeat="no-repeat"
-                                                    backgroundSize="cover"
-                                                    backgroundColor={name.toLowerCase()}
-                                                    backgroundImage={
-                                                        image
-                                                            ? `url(${image.disBaseLink ||
+                                            {values.map(({ href, name, image, value, orderable }) => (
+                                                <Swatch
+                                                    key={value}
+                                                    href={href}
+                                                    disabled={!orderable}
+                                                    value={value}
+                                                    name={name}
+                                                >
+                                                    {image ? (
+                                                        <Box
+                                                            height="100%"
+                                                            width="100%"
+                                                            minWidth="32px"
+                                                            backgroundRepeat="no-repeat"
+                                                            backgroundSize="cover"
+                                                            backgroundColor={name.toLowerCase()}
+                                                            backgroundImage={
+                                                                image
+                                                                    ? `url(${image.disBaseLink ||
                                                                     image.link})`
-                                                            : ''
-                                                    }
-                                                />
-                                            ) : (
-                                                name
-                                            )}
-                                        </Swatch>
-                                    ))}
-                                </SwatchGroup>
-                            : ''}
-                        </>
-                    )
-                })}
+                                                                    : ''
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        name
+                                                    )}
+                                                </Swatch>
+                                            ))}
+                                        </SwatchGroup>
+                                        : ''}
+                                </>
+                            )
+                        })
+                    :
+                    ''
+                }
             </>
 
             {/* Title */}
